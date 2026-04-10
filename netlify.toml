@@ -1,0 +1,38 @@
+## Netlify build & runtime configuration for Cave and Creek
+## Static site - no build step required.
+
+[build]
+  publish = "."
+
+# Proxy the Airbnb iCal feed to avoid CORS issues in the browser
+[[redirects]]
+  from = "/api/calendar"
+  to = "https://www.airbnb.com/calendar/ical/43354940.ics"
+  status = 200
+  force = true
+
+## Long cache for hashed/static assets (images, css, js)
+[[headers]]
+  for = "/*.avif"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+## HTML pages: short cache so updates appear quickly
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
