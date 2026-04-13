@@ -144,6 +144,55 @@
         });
     });
 
+    // ---------- Mobile gallery carousel dots ----------
+    function setupCarouselDots() {
+        if (window.innerWidth > 600) return;
+        document.querySelectorAll('.gallery').forEach(function (gallery) {
+            // Skip if dots already added
+            if (gallery.nextElementSibling && gallery.nextElementSibling.classList.contains('gallery-dots')) return;
+
+            var items = gallery.querySelectorAll('.gallery-item');
+            if (items.length < 2) return;
+
+            var dotsWrap = document.createElement('div');
+            dotsWrap.className = 'gallery-dots';
+
+            items.forEach(function (_, i) {
+                var dot = document.createElement('button');
+                dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+                dot.addEventListener('click', function () {
+                    items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+                dotsWrap.appendChild(dot);
+            });
+
+            gallery.parentNode.insertBefore(dotsWrap, gallery.nextSibling);
+
+            // Update active dot on scroll
+            var scrollTimeout;
+            gallery.addEventListener('scroll', function () {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(function () {
+                    var scrollLeft = gallery.scrollLeft;
+                    var itemWidth = gallery.offsetWidth;
+                    var activeIndex = Math.round(scrollLeft / itemWidth);
+                    dotsWrap.querySelectorAll('.gallery-dot').forEach(function (d, j) {
+                        d.classList.toggle('active', j === activeIndex);
+                    });
+                }, 50);
+            }, { passive: true });
+        });
+    }
+    setupCarouselDots();
+
+    // Re-setup dots when tabs change
+    tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            setTimeout(setupCarouselDots, 50);
+        });
+    });
+
     // ---------- Smooth scroll with header offset ----------
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
