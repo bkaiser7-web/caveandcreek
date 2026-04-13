@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=20">
+    <link rel="stylesheet" href="css/styles.css?v=21">
 
     <!-- JSON-LD: LodgingBusiness / VacationRental -->
     <script type="application/ld+json">
@@ -188,30 +188,9 @@
         <section id="cabin" class="section section-dark" aria-labelledby="cabin-heading">
             <div class="container">
                 <h2 id="cabin-heading">Explore the Property</h2>
-                <p class="section-intro">
-                    Everything you need for a comfortable stay. Click a floor to see the details and photos.
-                </p>
-
-                <div class="tabs-bar" role="tablist" aria-label="Property areas">
-                    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-outside" data-tab="outside">Outdoors</button>
-                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-first" data-tab="first">First Floor</button>
-                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-top" data-tab="top">Top Floor</button>
-                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-basement" data-tab="basement">Walk Out Basement</button>
-                </div>
-
-                <!-- OUTDOORS (default active tab) -->
-                <div class="tab-panel active" id="panel-outside" role="tabpanel">
-                    <p class="tab-desc">Step outside to three mowed hilltop acres with sweeping views of the surrounding forest. Soak in the private hot tub under the stars, gather around the fire pit for s'mores, grill out on the spacious deck, or unwind on the screened-in porch with your morning coffee — this is where your best vacation memories happen.</p>
-                    <ul class="amenity-tags">
-                        <li>Hot Tub</li>
-                        <li>Fire Pit</li>
-                        <li>Gas Grill</li>
-                        <li>Large Deck</li>
-                        <li>Screened-In Porch</li>
-                        <li>3 Mowed Acres</li>
-                        <li>Hilltop Views</li>
-                        <li>Plenty of Parking</li>
-                    </ul>
+                <div class="property-section">
+                    <h3>Outdoors</h3>
+                    <p class="property-desc">Step outside to three mowed hilltop acres with sweeping views of the surrounding forest. Soak in the private hot tub under the stars, gather around the fire pit for s'mores, grill out on the spacious deck, or unwind on the screened-in porch with your morning coffee — this is where your best vacation memories happen.</p>
                     <div class="gallery">
                         <div class="gallery-item" data-full="deck.jpg" data-caption="Large outdoor deck">
                             <img src="deck.jpg" alt="Large outdoor deck at Cave and Creek cabin" loading="lazy" width="800" height="600">
@@ -237,18 +216,9 @@
                     </div>
                 </div>
 
-                <!-- FIRST FLOOR -->
-                <div class="tab-panel" id="panel-first" role="tabpanel">
-                    <p class="tab-desc">The heart of the cabin. A sun-filled living room with vaulted ceilings flows into a fully equipped kitchen — perfect for family dinners after a long day on the trails. A cozy queen bedroom and a kids' favorite bunk room with two sets of bunks make this floor feel like home from the moment you walk in.</p>
-                    <ul class="amenity-tags">
-                        <li>Queen Bed</li>
-                        <li>Two Bunk Beds</li>
-                        <li>Full Bathroom</li>
-                        <li>Open Concept Kitchen</li>
-                        <li>Vaulted Ceiling</li>
-                        <li>Fully Furnished</li>
-                        <li>High-Speed Wi-Fi</li>
-                    </ul>
+                <div class="property-section">
+                    <h3>First Floor</h3>
+                    <p class="property-desc">The heart of the cabin. A sun-filled living room with vaulted ceilings flows into a fully equipped kitchen — perfect for family dinners after a long day on the trails. A cozy queen bedroom and a kids' favorite bunk room with two sets of bunks make this floor feel like home from the moment you walk in.</p>
                     <div class="gallery">
                         <div class="gallery-item" data-full="livingroom1.avif" data-caption="Living room with vaulted ceiling">
                             <img src="livingroom1.avif" alt="Open concept living room with vaulted ceiling at Cave and Creek" loading="lazy" width="800" height="600">
@@ -271,14 +241,9 @@
                     </div>
                 </div>
 
-                <!-- TOP FLOOR -->
-                <div class="tab-panel" id="panel-top" role="tabpanel">
-                    <p class="tab-desc">Your private retreat above it all. Climb upstairs to a spacious king bedroom with its own en suite bathroom — a quiet escape where you can recharge while the kids play downstairs.</p>
-                    <ul class="amenity-tags">
-                        <li>King Bed</li>
-                        <li>En Suite Bathroom</li>
-                        <li>Private Floor</li>
-                    </ul>
+                <div class="property-section">
+                    <h3>Top Floor</h3>
+                    <p class="property-desc">Your private retreat above it all. Climb upstairs to a spacious king bedroom with its own en suite bathroom — a quiet escape where you can recharge while the kids play downstairs.</p>
                     <div class="gallery">
                         <div class="gallery-item" data-full="bedroom1.avif" data-caption="King bedroom with en suite bath">
                             <img src="bedroom1.avif" alt="Top floor king bedroom with en suite bathroom at Cave and Creek" loading="lazy" width="800" height="600">
@@ -286,16 +251,9 @@
                     </div>
                 </div>
 
-                <!-- WALK OUT BASEMENT -->
-                <div class="tab-panel" id="panel-basement" role="tabpanel">
-                    <p class="tab-desc">The ultimate hangout spot. A carpeted bar area with a pull-out couch is ideal for movie nights or a game of cards after dark. Down the hall, a king bedroom with its own en suite bathroom offers a second private suite — and the walk-out door puts you steps from the yard and hot tub.</p>
-                    <ul class="amenity-tags">
-                        <li>King Bed</li>
-                        <li>En Suite Bathroom</li>
-                        <li>Pull-Out Couch</li>
-                        <li>Bar Area</li>
-                        <li>Walk-Out Access</li>
-                    </ul>
+                <div class="property-section">
+                    <h3>Walk Out Basement</h3>
+                    <p class="property-desc">The ultimate hangout spot. A carpeted bar area with a pull-out couch is ideal for movie nights or a game of cards after dark. Down the hall, a king bedroom with its own en suite bathroom offers a second private suite — and the walk-out door puts you steps from the yard and hot tub.</p>
                     <div class="gallery">
                         <div class="gallery-item" data-full="basement.avif" data-caption="Bar area with pull-out couch">
                             <img src="basement.avif" alt="Walk-out basement with carpeted bar area and pull-out couch at Cave and Creek" loading="lazy" width="800" height="600">
@@ -469,6 +427,6 @@
         <a href="https://www.airbnb.com/rooms/43354940" class="btn btn-primary" target="_blank" rel="noopener">Book on Airbnb</a>
     </div>
 
-    <script src="js/main.js?v=5" defer></script>
+    <script src="js/main.js?v=6" defer></script>
 </body>
 </html>

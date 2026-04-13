@@ -321,69 +321,23 @@ p { margin: 0 0 1em; }
     margin-top: 1.5rem;
 }
 
-/* ---------- Tabs ---------- */
-.tabs-bar {
-    display: flex;
-    gap: 0;
-    border-bottom: 2px solid var(--gray-300);
-    margin-bottom: 2rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+/* ---------- Property Sections ---------- */
+.property-section {
+    margin-bottom: 3rem;
 }
-.tabs-bar::-webkit-scrollbar { display: none; }
-.tab-btn {
-    flex: 0 0 auto;
-    background: none;
-    border: none;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    padding: 0.9rem 1.5rem;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--gray-500);
-    cursor: pointer;
-    white-space: nowrap;
-    transition: color var(--transition), border-color var(--transition);
+.property-section:last-of-type {
+    margin-bottom: 1.5rem;
 }
-.tab-btn:hover {
-    color: var(--green-700);
+.property-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
 }
-.tab-btn.active {
-    color: var(--green-900);
-    border-bottom-color: var(--sand-500);
-}
-
-/* Tab panels */
-.tab-panel {
-    display: none;
-}
-.tab-panel.active {
-    display: block;
-}
-.tab-desc {
+.property-desc {
     color: var(--gray-700);
     font-size: 1.02rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 1.2rem;
     max-width: 700px;
-}
-.amenity-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5rem;
-}
-.amenity-tags li {
-    background: var(--white);
-    border: 1px solid var(--gray-300);
-    border-radius: 50px;
-    padding: 0.35rem 0.9rem;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--green-700);
 }
 
 /* ---------- Gallery ---------- */
@@ -906,35 +860,6 @@ p { margin: 0 0 1em; }
     .parallax-divider {
         background-attachment: scroll;
         min-height: 260px;
-    }
-    .tabs-bar {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        overflow-x: visible;
-        border-bottom: none;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-        background: var(--green-900);
-        padding: 0.6rem;
-        border-radius: 12px;
-    }
-    .tab-btn {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding: 0.8rem 0.5rem;
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-align: center;
-        border-radius: 8px;
-        background: transparent;
-        color: rgba(255, 255, 255, 0.6);
-        border: 1px solid transparent;
-    }
-    .tab-btn.active {
-        background: var(--green-500);
-        color: var(--white);
-        border-bottom-color: transparent;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 }
 

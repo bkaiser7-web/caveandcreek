@@ -119,31 +119,6 @@
         yearEl.textContent = String(new Date().getFullYear());
     }
 
-    // ---------- Tabbed cabin section ----------
-    var tabBtns = document.querySelectorAll('.tab-btn');
-    var tabPanels = document.querySelectorAll('.tab-panel');
-
-    tabBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var target = btn.getAttribute('data-tab');
-
-            // Deactivate all tabs
-            tabBtns.forEach(function (b) {
-                b.classList.remove('active');
-                b.setAttribute('aria-selected', 'false');
-            });
-            tabPanels.forEach(function (p) {
-                p.classList.remove('active');
-            });
-
-            // Activate clicked tab
-            btn.classList.add('active');
-            btn.setAttribute('aria-selected', 'true');
-            var panel = document.getElementById('panel-' + target);
-            if (panel) panel.classList.add('active');
-        });
-    });
-
     // ---------- Mobile gallery carousel dots ----------
     function setupCarouselDots() {
         if (window.innerWidth > 600) return;
@@ -185,13 +160,6 @@
         });
     }
     setupCarouselDots();
-
-    // Re-setup dots when tabs change
-    tabBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            setTimeout(setupCarouselDots, 50);
-        });
-    });
 
     // ---------- Smooth scroll with header offset ----------
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
