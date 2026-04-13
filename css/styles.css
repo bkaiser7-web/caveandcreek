@@ -213,8 +213,8 @@ p { margin: 0 0 1em; }
     height: auto;
     margin: 0 auto 1.5rem;
     display: block;
-    opacity: 0.6;
-    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
 }
 .hero-sub {
     font-family: "Montserrat", sans-serif;
@@ -667,11 +667,10 @@ p { margin: 0 0 1em; }
     color: var(--sand-500);
 }
 .footer-logo {
-    width: 140px;
+    width: 180px;
     height: auto;
     margin-bottom: 0.8rem;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
+    mix-blend-mode: screen;
 }
 .footer-tag {
     color: var(--cream-100);
