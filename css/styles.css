@@ -209,12 +209,12 @@ p { margin: 0 0 1em; }
     background: none;
 }
 .hero-logo {
-    width: clamp(200px, 36vw, 300px);
+    width: clamp(260px, 44vw, 420px);
     height: auto;
     margin: 0 auto 1.5rem;
     display: block;
-    opacity: 0.82;
-    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+    opacity: 0.6;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
 }
 .hero-sub {
     font-family: "Montserrat", sans-serif;
