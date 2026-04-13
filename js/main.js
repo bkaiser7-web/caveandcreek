@@ -26,6 +26,69 @@
         });
     }
 
+    // ---------- Hero logo: remove white bg, tint green ----------
+    var heroCanvas = document.getElementById('hero-heading');
+    if (heroCanvas && heroCanvas.tagName === 'CANVAS') {
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function () {
+            heroCanvas.width = img.naturalWidth;
+            heroCanvas.height = img.naturalHeight;
+            var ctx = heroCanvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            var imageData = ctx.getImageData(0, 0, heroCanvas.width, heroCanvas.height);
+            var d = imageData.data;
+            // Target green color: #16492a (22, 73, 42)
+            for (var i = 0; i < d.length; i += 4) {
+                var r = d[i], g = d[i + 1], b = d[i + 2];
+                // Calculate brightness
+                var brightness = (r + g + b) / 3;
+                if (brightness > 200) {
+                    // White/near-white pixels → fully transparent
+                    d[i + 3] = 0;
+                } else {
+                    // Dark pixels → tint green, opacity based on darkness
+                    var darkness = 1 - (brightness / 200);
+                    d[i] = 22;      // R
+                    d[i + 1] = 73;  // G
+                    d[i + 2] = 42;  // B
+                    d[i + 3] = Math.round(darkness * 255);
+                }
+            }
+            ctx.putImageData(imageData, 0, 0);
+        };
+        img.src = 'logo1.jpg';
+    }
+
+    // ---------- Footer logo: remove white bg, tint white ----------
+    var footerCanvas = document.getElementById('footer-logo-canvas');
+    if (footerCanvas) {
+        var fImg = new Image();
+        fImg.crossOrigin = 'anonymous';
+        fImg.onload = function () {
+            footerCanvas.width = fImg.naturalWidth;
+            footerCanvas.height = fImg.naturalHeight;
+            var fCtx = footerCanvas.getContext('2d');
+            fCtx.drawImage(fImg, 0, 0);
+            var fData = fCtx.getImageData(0, 0, footerCanvas.width, footerCanvas.height);
+            var fd = fData.data;
+            for (var i = 0; i < fd.length; i += 4) {
+                var brightness = (fd[i] + fd[i + 1] + fd[i + 2]) / 3;
+                if (brightness > 200) {
+                    fd[i + 3] = 0; // transparent
+                } else {
+                    var darkness = 1 - (brightness / 200);
+                    fd[i] = 255;     // R
+                    fd[i + 1] = 255; // G
+                    fd[i + 2] = 255; // B
+                    fd[i + 3] = Math.round(darkness * 220);
+                }
+            }
+            fCtx.putImageData(fData, 0, 0);
+        };
+        fImg.src = 'logo1.jpg';
+    }
+
     // ---------- Footer year ----------
     var yearEl = document.getElementById('year');
     if (yearEl) {

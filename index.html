@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=15">
+    <link rel="stylesheet" href="css/styles.css?v=16">
 
     <!-- JSON-LD: LodgingBusiness / VacationRental -->
     <script type="application/ld+json">
@@ -110,7 +110,7 @@
         <section class="hero" aria-labelledby="hero-heading">
             <div class="hero-overlay"></div>
             <div class="container hero-content">
-                <img src="logo1.jpg" alt="Cave & Creek — Hocking Hills, Ohio" class="hero-logo" id="hero-heading">
+                <canvas id="hero-heading" class="hero-logo" aria-label="Cave & Creek — Hocking Hills, Ohio" role="img"></canvas>
                 <p class="hero-sub">A family cabin on 20 private acres, one mile from Old Man's Cave.</p>
                 <div class="hero-stats">
                     <div class="hero-stat">
@@ -427,7 +427,7 @@
     <footer class="site-footer">
         <div class="container footer-grid">
             <div>
-                <img src="logo1.jpg" alt="Cave & Creek" class="footer-logo">
+                <canvas class="footer-logo" id="footer-logo-canvas" aria-label="Cave & Creek" role="img"></canvas>
                 <p class="footer-tag">A family-friendly cabin one mile from Old Man's Cave.</p>
             </div>
             <div>
@@ -466,6 +466,6 @@
         <a href="https://www.airbnb.com/rooms/43354940" class="btn btn-primary" target="_blank" rel="noopener">Book on Airbnb</a>
     </div>
 
-    <script src="js/main.js?v=2" defer></script>
+    <script src="js/main.js?v=3" defer></script>
 </body>
 </html>
