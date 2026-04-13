@@ -38,24 +38,48 @@
             ctx.drawImage(img, 0, 0);
             var imageData = ctx.getImageData(0, 0, heroCanvas.width, heroCanvas.height);
             var d = imageData.data;
-            // Target green color: #16492a (22, 73, 42)
+            // Target color: white (#ffffff)
             for (var i = 0; i < d.length; i += 4) {
                 var r = d[i], g = d[i + 1], b = d[i + 2];
-                // Calculate brightness
                 var brightness = (r + g + b) / 3;
                 if (brightness > 200) {
-                    // White/near-white pixels → fully transparent
                     d[i + 3] = 0;
                 } else {
-                    // Dark pixels → tint green, opacity based on darkness
                     var darkness = 1 - (brightness / 200);
-                    d[i] = 22;      // R
-                    d[i + 1] = 73;  // G
-                    d[i + 2] = 42;  // B
+                    d[i] = 255;
+                    d[i + 1] = 255;
+                    d[i + 2] = 255;
                     d[i + 3] = Math.round(darkness * 255);
                 }
             }
             ctx.putImageData(imageData, 0, 0);
+
+            // Draw a second pass with slight offset for outline/glow effect
+            var outlineCanvas = document.createElement('canvas');
+            outlineCanvas.width = heroCanvas.width;
+            outlineCanvas.height = heroCanvas.height;
+            var oCtx = outlineCanvas.getContext('2d');
+
+            // Draw dark shadow copies in all directions for outline
+            oCtx.shadowColor = 'rgba(0,0,0,0.7)';
+            oCtx.shadowBlur = 6;
+            for (var ox = -2; ox <= 2; ox += 2) {
+                for (var oy = -2; oy <= 2; oy += 2) {
+                    oCtx.shadowOffsetX = ox;
+                    oCtx.shadowOffsetY = oy;
+                    oCtx.drawImage(heroCanvas, 0, 0);
+                }
+            }
+            // Draw the white logo on top
+            oCtx.shadowColor = 'transparent';
+            oCtx.shadowBlur = 0;
+            oCtx.shadowOffsetX = 0;
+            oCtx.shadowOffsetY = 0;
+            oCtx.drawImage(heroCanvas, 0, 0);
+
+            // Copy result back
+            ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+            ctx.drawImage(outlineCanvas, 0, 0);
         };
         img.src = 'logo1.jpg';
     }
