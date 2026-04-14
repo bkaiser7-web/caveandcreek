@@ -191,7 +191,7 @@ p { margin: 0 0 1em; }
     display: flex;
     align-items: center;
     color: var(--cream-50);
-    background: #111;
+    background: #111 url('https://i.ytimg.com/vi/JGde3WsIt4c/maxresdefault.jpg') center/cover no-repeat;
     overflow: hidden;
 }
 .hero-video-wrap {
@@ -203,6 +203,11 @@ p { margin: 0 0 1em; }
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.hero-video-wrap.playing {
+    opacity: 1;
 }
 .hero-video-wrap iframe {
     position: absolute;

@@ -30,6 +30,9 @@
                         e.target.playVideo();
                     },
                     onStateChange: function (e) {
+                        if (e.data === YT.PlayerState.PLAYING) {
+                            document.querySelector('.hero-video-wrap').classList.add('playing');
+                        }
                         if (e.data === YT.PlayerState.ENDED) {
                             player.seekTo(37);
                             player.playVideo();
