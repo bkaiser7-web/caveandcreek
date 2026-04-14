@@ -191,7 +191,7 @@ p { margin: 0 0 1em; }
     display: flex;
     align-items: center;
     color: var(--cream-50);
-    background: #111 url('https://i.ytimg.com/vi/JGde3WsIt4c/maxresdefault.jpg') center/cover no-repeat;
+    background: #111 url('../exteriornight.avif') center/cover no-repeat;
     overflow: hidden;
 }
 .hero-video-wrap {
