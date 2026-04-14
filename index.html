@@ -29,11 +29,10 @@
     <meta name="twitter:image" content="https://YOUR_DOMAIN/hero.jpg">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=24">
+    <link rel="stylesheet" href="css/styles.css?v=25">
 
     <!-- JSON-LD: LodgingBusiness / VacationRental -->
     <script type="application/ld+json">
@@ -109,9 +108,9 @@
 
         <!-- ============ HERO ============ -->
         <section class="hero" aria-labelledby="hero-heading">
-            <div class="hero-video-wrap">
-                <div id="hero-yt-player"></div>
-            </div>
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
             <div class="hero-overlay"></div>
             <div class="container hero-content">
                 <canvas id="hero-heading" class="hero-logo" aria-label="Cave & Creek — Hocking Hills, Ohio" role="img"></canvas>
@@ -428,6 +427,6 @@
         <a href="https://www.airbnb.com/rooms/43354940" class="btn btn-primary" target="_blank" rel="noopener">Book on Airbnb</a>
     </div>
 
-    <script src="js/main.js?v=8" defer></script>
+    <script src="js/main.js?v=9" defer></script>
 </body>
 </html>

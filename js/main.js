@@ -5,48 +5,6 @@
 (function () {
     'use strict';
 
-    // ---------- YouTube hero background ----------
-    if (document.querySelector('.hero-video-wrap')) {
-        window.onYouTubeIframeAPIReady = function () {
-            var player = new YT.Player('hero-yt-player', {
-                videoId: 'JGde3WsIt4c',
-                playerVars: {
-                    autoplay: 1,
-                    mute: 1,
-                    controls: 0,
-                    showinfo: 0,
-                    rel: 0,
-                    loop: 0,
-                    start: 37,
-                    modestbranding: 1,
-                    playsinline: 1,
-                    disablekb: 1,
-                    fs: 0,
-                    iv_load_policy: 3
-                },
-                events: {
-                    onReady: function (e) {
-                        e.target.mute();
-                        e.target.playVideo();
-                    },
-                    onStateChange: function (e) {
-                        if (e.data === YT.PlayerState.PLAYING) {
-                            document.querySelector('.hero-video-wrap').classList.add('playing');
-                        }
-                        if (e.data === YT.PlayerState.ENDED) {
-                            player.seekTo(37);
-                            player.playVideo();
-                        }
-                    }
-                }
-            });
-        };
-        // Load YouTube IFrame API dynamically
-        var ytTag = document.createElement('script');
-        ytTag.src = 'https://www.youtube.com/iframe_api';
-        document.head.appendChild(ytTag);
-    }
-
     // ---------- Mobile nav toggle ----------
     var navToggle = document.querySelector('.nav-toggle');
     var primaryNav = document.getElementById('primary-nav');
