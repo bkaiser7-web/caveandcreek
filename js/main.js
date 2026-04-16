@@ -6,19 +6,23 @@
     'use strict';
 
     // ---------- Hero video ----------
-    // autoplay is intentionally NOT set as an HTML attribute — that causes browsers
-    // to show their native "tap to play" overlay when blocked. Driving play() from JS
-    // lets a blocked attempt fail silently, so the poster image shows cleanly instead.
     var heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
         heroVideo.addEventListener('error', function () {
             heroVideo.style.display = 'none';
         });
+
+        function startHeroVideo() {
+            heroVideo.play().catch(function () {});
+        }
+
         var playAttempt = heroVideo.play();
         if (playAttempt !== undefined) {
             playAttempt.catch(function () {
-                // Blocked (Low Power Mode, data saver, strict browser policy).
-                // poster="hero2.jpg" and the .hero CSS background-image both show.
+                // Autoplay blocked — play on first user interaction instead.
+                // touchstart fires on any scroll or tap, guaranteeing a user gesture.
+                document.addEventListener('touchstart', startHeroVideo, { once: true, passive: true });
+                document.addEventListener('click', startHeroVideo, { once: true });
             });
         }
     }
