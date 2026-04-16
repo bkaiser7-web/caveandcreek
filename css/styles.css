@@ -857,9 +857,6 @@ p { margin: 0 0 1em; }
         background-attachment: scroll;
         min-height: 260px;
     }
-    /* Hide video on small screens — static background-image fallback on .hero shows instead.
-       Prevents the browser's native "tap to play" overlay on phones that block autoplay. */
-    .hero-video { display: none; }
 }
 
 /* iOS doesn't support background-attachment: fixed */

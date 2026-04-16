@@ -5,17 +5,20 @@
 (function () {
     'use strict';
 
-    // ---------- Hero video autoplay fallback (desktop only) ----------
-    // Mobile hides .hero-video via CSS, avoiding the browser's "tap to play" overlay.
-    var heroVideo = document.querySelector('.hero-video');
-    if (heroVideo && getComputedStyle(heroVideo).display !== 'none') {
+    // ---------- Hero video ----------
+    // autoplay is intentionally NOT set as an HTML attribute — that causes browsers
+    // to show their native "tap to play" overlay when blocked. Driving play() from JS
+    // lets a blocked attempt fail silently, so the poster image shows cleanly instead.
+    var heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
         heroVideo.addEventListener('error', function () {
             heroVideo.style.display = 'none';
         });
         var playAttempt = heroVideo.play();
         if (playAttempt !== undefined) {
             playAttempt.catch(function () {
-                heroVideo.style.display = 'none';
+                // Blocked (Low Power Mode, data saver, strict browser policy).
+                // poster="hero2.jpg" and the .hero CSS background-image both show.
             });
         }
     }

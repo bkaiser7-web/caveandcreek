@@ -108,9 +108,12 @@
 
         <!-- ============ HERO ============ -->
         <section class="hero" aria-labelledby="hero-heading">
-            <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="hero2.jpg">
+            <video class="hero-video" muted loop playsinline preload="auto" poster="hero2.jpg" id="hero-video">
                 <source src="hero-video.mp4" type="video/mp4">
             </video>
+            <script>
+                (function(){var v=document.getElementById('hero-video');if(v){var p=v.play();if(p)p.catch(function(){});}})();
+            </script>
             <div class="hero-overlay"></div>
             <div class="container hero-content">
                 <canvas id="hero-heading" class="hero-logo" aria-label="Cave & Creek — Hocking Hills, Ohio" role="img"></canvas>
