@@ -5,6 +5,19 @@
 (function () {
     'use strict';
 
+    // ---------- Hero video autoplay fallback ----------
+    var heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        var playAttempt = heroVideo.play();
+        if (playAttempt !== undefined) {
+            playAttempt.catch(function () {
+                // Autoplay blocked (Low Power Mode, data saver, etc.) — hide video so
+                // the CSS background-image fallback on .hero shows through.
+                heroVideo.style.display = 'none';
+            });
+        }
+    }
+
     // ---------- Mobile nav toggle ----------
     var navToggle = document.querySelector('.nav-toggle');
     var primaryNav = document.getElementById('primary-nav');
