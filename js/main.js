@@ -5,14 +5,16 @@
 (function () {
     'use strict';
 
-    // ---------- Hero video autoplay fallback ----------
+    // ---------- Hero video autoplay fallback (desktop only) ----------
+    // Mobile hides .hero-video via CSS, avoiding the browser's "tap to play" overlay.
     var heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
+    if (heroVideo && getComputedStyle(heroVideo).display !== 'none') {
+        heroVideo.addEventListener('error', function () {
+            heroVideo.style.display = 'none';
+        });
         var playAttempt = heroVideo.play();
         if (playAttempt !== undefined) {
             playAttempt.catch(function () {
-                // Autoplay blocked (Low Power Mode, data saver, etc.) — hide video so
-                // the CSS background-image fallback on .hero shows through.
                 heroVideo.style.display = 'none';
             });
         }

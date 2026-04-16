@@ -11,6 +11,14 @@
   status = 200
   force = true
 
+## Video: explicit MIME type + range support (required by iOS Safari for playback)
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Accept-Ranges = "bytes"
+    Cache-Control = "public, max-age=31536000, immutable"
+
 ## Long cache for hashed/static assets (images, css, js)
 [[headers]]
   for = "/*.avif"
