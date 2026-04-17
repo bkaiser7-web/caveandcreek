@@ -32,7 +32,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=25">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <link rel="stylesheet" href="css/styles.css?v=26">
 
     <!-- JSON-LD: LodgingBusiness / VacationRental -->
     <script type="application/ld+json">
@@ -313,6 +314,7 @@
                         </ul>
                     </div>
                 </div>
+                <div id="area-map"></div>
             </div>
         </section>
 
@@ -429,6 +431,44 @@
         <a href="https://www.airbnb.com/rooms/43354940" class="btn btn-primary" target="_blank" rel="noopener">Book on Airbnb</a>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="js/main.js?v=9" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var map = L.map('area-map', { scrollWheelZoom: false }).setView([39.46, -82.54], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 18
+        }).addTo(map);
+
+        var cabin = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+            iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+            iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+        });
+
+        var spots = [
+            { lat: 39.4480, lng: -82.5370, name: 'Cave and Creek', desc: '19432 State Route 664 S, Logan, OH 43138', color: '#2d4a35' },
+            { lat: 39.4345, lng: -82.5421, name: "Old Man's Cave", desc: '~1 mile from cabin' },
+            { lat: 39.4266, lng: -82.5357, name: 'Hocking Hills State Park Lodge', desc: '~3 miles from cabin' },
+            { lat: 39.4183, lng: -82.5263, name: 'Cedar Falls', desc: 'Short drive' },
+            { lat: 39.3963, lng: -82.5456, name: 'Ash Cave', desc: 'Short drive' },
+            { lat: 39.4472, lng: -82.5672, name: "Conkle's Hollow Nature Preserve", desc: '' },
+            { lat: 39.4956, lng: -82.6129, name: 'Rock House', desc: '' },
+            { lat: 39.5785, lng: -82.5198, name: 'Hocking Hills Canopy Tours', desc: '' },
+            { lat: 39.5351, lng: -82.4629, name: 'Lake Logan State Park', desc: '' }
+        ];
+
+        spots.forEach(function (s) {
+            var popup = '<strong>' + s.name + '</strong>' + (s.desc ? '<br>' + s.desc : '');
+            var m = L.marker([s.lat, s.lng]).addTo(map).bindPopup(popup);
+            if (s.color) m.openPopup();
+        });
+
+        var group = L.featureGroup(spots.map(function (s) { return L.marker([s.lat, s.lng]); }));
+        map.fitBounds(group.getBounds().pad(0.15));
+    });
+    </script>
 </body>
 </html>
